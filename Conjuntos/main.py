@@ -12,7 +12,7 @@ a.inserir(1)
 a.inserir(5)
 a.inserir(6)
 
-a.imprimir()
+'''a.imprimir()
 
 b.inserir(2)
 b.inserir(4)
@@ -49,4 +49,6 @@ e = a.diferenca(b)
 e.nomear('E')
 e.imprimir()
 
-print(a.conjuntoDasPartes())
+print(a.conjuntoDasPartes())'''
+
+a.tamanho()

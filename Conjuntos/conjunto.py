@@ -1,5 +1,5 @@
 class Conjunto:
-    def __init__(self):
+    def __init__(self, *arg, **args):
         self.conjunto = []
         self.nome = 'Sem nome'
     
@@ -12,6 +12,9 @@ class Conjunto:
     def imprimir(self):
         print(self.nome,'= {', (', ').join(sorted(self.conjunto)), '}')
 
+    def tamanho(self):
+        print(len(self.conjunto))
+        
     def pertence(self, elemento):
         return elemento in self.conjunto
 
@@ -57,44 +60,7 @@ class Conjunto:
                 result.inserir(i)
 
         return result
-    
-    # def __addCDP__(self, size, conjunto):
-
-        # print('entrou na função\n')
-        # if len(conjunto) and size <= len(conjunto):
-        #     print('entrou no if\n')
-        #     result = Conjunto()
-        #     size = size
-        #     index = 0
-
-        #     print('size: ', size,'\nindex: ',index)
-
-        #     a = []
-
-        #     for i in range(len(conjunto)):
-        #         print('posição: ',conjunto[i])
-        #         if size == 0:
-        #             result.inserir(i)
-        #             a.append(i)
-        #         else:
-        #             print('entrou no else\n')
-        #             sub = Conjunto()
-        #             b = []
-        #             if (index + size) <= len(conjunto):
-        #                 for j in range(size):
-        #                     print(index,size, len(conjunto))
-        #                     sub.inserir(conjunto[index+j])
-        #                     b.append(index+j)
-                    
-        #             sub.imprimir()
-        #             result.inserir(sub)
-        #             a.append(b)
-        #             print(a)
-        #         index += 1
-
-        #     return result.inserir(self.__addCDP__(size+1, conjunto))
-
-    
+        
     def conjuntoDasPartes(self):
         conjunto = []
         conjunto.append([])
