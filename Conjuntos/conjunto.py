@@ -7,13 +7,16 @@ class Conjunto:
         self.nome = nome
     
     def inserir(self, elemento):
-              self.conjunto.append(str(elemento))
+        if elemento not in self.conjunto:
+            self.conjunto.append(str(elemento))
+        else:
+            print('Já possui o elemento ', elemento)
     
     def imprimir(self):
         print(self.nome,'= {', (', ').join(sorted(self.conjunto)), '}')
 
     def tamanho(self):
-        print(len(self.conjunto))
+        return len(self.conjunto)
         
     def pertence(self, elemento):
         return elemento in self.conjunto
@@ -24,6 +27,14 @@ class Conjunto:
                 return False
 
         return True
+    
+    def contidoPropriamente(self, elemento):
+        if elemento.conjunto < self.conjunto:
+            for i in elemento:
+                if i not in self.conjunto:
+                    return False
+            return True
+        return False
     
     def uniao(self, elemento):
         uniao = Conjunto()
