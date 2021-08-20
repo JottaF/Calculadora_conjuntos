@@ -10,7 +10,6 @@ c.nomear('C')
 a.inserir(2)
 a.inserir(1)
 a.inserir(5)
-a.inserir(6)
 
 a.imprimir()
 
@@ -29,9 +28,9 @@ print(a.uniao(b))
 a.imprimir()
 
 print('\nContido')
-print(b.contido(a))
-print(b.contido(c))
-print(c.contido(b))
+print(b.contem(a))
+print(b.contem(c))
+print(c.contem(b))
 
 print('\nIgual')
 print(c.igual(b))
@@ -49,6 +48,8 @@ e = a.diferenca(b)
 e.nomear('E')
 e.imprimir()
 
-print(a.conjuntoDasPartes())
+print('\n\nContido propriamente')
+print(a.contidoPropriamente(b))
 
-a.tamanho()
+print('Conjunto das partes')
+print(a.conjuntoDasPartes())

@@ -1,8 +1,11 @@
 class Conjunto:
-    def __init__(self, *arg, **args):
+    def __init__(self, *arg):
         self.conjunto = []
-        self.nome = 'Sem nome'
-    
+        self.nome = 'nome'
+
+        for i in arg:
+            if i not in self.conjunto:
+                self.conjunto.append(str(i))
     def nomear(self, nome):
         self.nome = nome
     
@@ -16,25 +19,17 @@ class Conjunto:
         print(self.nome,'= {', (', ').join(sorted(self.conjunto)), '}')
 
     def tamanho(self):
-        return len(self.conjunto)
+        print(len(self.conjunto))
         
-    def pertence(self, elemento):
+    def possui(self, elemento):
         return elemento in self.conjunto
 
-    def contido(self, elemento):
+    def contem(self, elemento):
         for i in self.conjunto:
             if i not in elemento.conjunto:
                 return False
 
         return True
-    
-    def contidoPropriamente(self, elemento):
-        if elemento.conjunto < self.conjunto:
-            for i in elemento:
-                if i not in self.conjunto:
-                    return False
-            return True
-        return False
     
     def uniao(self, elemento):
         uniao = Conjunto()
@@ -71,15 +66,36 @@ class Conjunto:
                 result.inserir(i)
 
         return result
-        
+    
     def conjuntoDasPartes(self):
-        conjunto = []
-        conjunto.append([])
-
-        for i in self.conjunto:
-            conjunto.append([i])
+        a = self.conjunto
+        lista = [[None]]
+        for i in range (len(a)):
+            lista.append([a[i]])
+            for j in range(1,len(a)):
+                if not a[i] == a[j]:
+                    if [a[j],a[i]]not in lista:
+                        lista.append([a[i],a[j]])
+                        
+        for i in range(len(a)):
+            for e in range(i+1,len(a)):
+                for u in range(e+1,len(a)):
+                    lista.append([a[i],a[e],a[u]])
+                    print('ok')     
+        return lista
         
+    def ehVazio(self):
+        if len(self.conjunto) == 0:
+            return True
         
+        return False
 
-        return conjunto
+    def contidoPropriamente(self, elemento):
+        if len(elemento.conjunto) < len(self.conjunto):
+            for i in elemento.conjunto:
+                if i not in self.conjunto:
+                    return False
+            return True
+        return False
+        
 
