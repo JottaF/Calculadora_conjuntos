@@ -10,6 +10,7 @@ c.nomear('C')
 a.inserir(2)
 a.inserir(1)
 a.inserir(5)
+a.inserir(6)
 
 a.imprimir()
 
@@ -51,5 +52,6 @@ e.imprimir()
 print('\n\nContido propriamente')
 print(a.contidoPropriamente(b))
 
-print('Conjunto das partes')
-print(a.conjuntoDasPartes())
+print('\n\nConjunto das partes')
+a.conjuntoDasPartes()
+

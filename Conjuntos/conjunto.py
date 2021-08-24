@@ -68,27 +68,51 @@ class Conjunto:
         return result
     
     def conjuntoDasPartes(self):
-        a = self.conjunto
-        lista = [[None]]
-        for i in range (len(a)):
-            lista.append([a[i]])
-            for j in range(1,len(a)):
-                if not a[i] == a[j]:
-                    if [a[j],a[i]]not in lista:
-                        lista.append([a[i],a[j]])
-                        
-        for i in range(len(a)):
-            for e in range(i+1,len(a)):
-                for u in range(e+1,len(a)):
-                    lista.append([a[i],a[e],a[u]])
-                    print('ok')     
-        return lista
-        
+        base = sorted(self.conjunto)
+        conjunto = []
+        conjunto.append([])
+
+        for i in range(len(base)+1):
+            elemento = self.__Rec(base,base,i,i)
+            for i in elemento:
+                if not i in conjunto:
+                    conjunto.append(i)
+
+        print(conjunto)
+        return conjunto
+    
+    def __Rec(self, base, rBase, size,rSize,points=[], times = 0):
+        result = []
+        for i in range(len(base)):
+            if len(base) > 2 and size > 1:
+                c = base[i:]
+                if not base[i] in points and base[i] != base[-1] and len(points) < rSize:
+                    points.append(base[i])
+                time = times+1
+                result += self.__Rec(c,rBase,size-1,rSize,points,time)
+
+            else:
+                lista = points.copy()
+
+                if not base[i] in lista:
+                    lista.append(base[i])
+                    if len(lista) == rSize:
+                        if not lista in result:
+                            result.append(lista)
+            if times == 0 and points:
+                points.remove(points[0])
+            else:
+                if len(points) > times:
+                    points.remove(points[times])
+
+        return result
+
     def ehVazio(self):
         if len(self.conjunto) == 0:
             return True
         
         return False
+        
 
     def contidoPropriamente(self, elemento):
         if len(elemento.conjunto) < len(self.conjunto):
