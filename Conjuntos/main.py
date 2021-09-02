@@ -57,3 +57,7 @@ print('\n\ntoString')
 l = Conjunto()
 z = Conjunto(1,2,a,l)
 print(z.toString())
+
+print('\n\nPoduto cartesiano')
+p = x.produto_cartesiano(a)
+print(p.toString())

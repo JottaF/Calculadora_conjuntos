@@ -121,16 +121,14 @@ class Conjunto:
         return False
         
     def produto_cartesiano(self,elemento): 
-        coordenadas=[]
+        coordenadas = Conjunto()        
         for i in self.conjunto:
             for j in elemento.conjunto:
-                coordenadas.append((i,j))
-        print('Coordenadas\n', coordenadas)
-        return False
+                coordenadas.inserir((i,j))
+        return coordenadas
     
     def toString(self):
         result = '{'
-        print(self.conjunto)
         for i in range(len(self.conjunto)):
             if type(self.conjunto[i]) == type(Conjunto()):
                 if i < len(self.conjunto)-1:
