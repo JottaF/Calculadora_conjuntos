@@ -9,10 +9,10 @@ c.nomear('C')
 
 a.inserir(2)
 a.inserir(1)
+a.inserir(3)
+a.inserir(4)
 a.inserir(5)
-a.inserir(6)
-
-a.imprimir()
+# a.inserir(6)
 
 b.inserir(2)
 b.inserir(4)
@@ -25,8 +25,6 @@ c.inserir(4)
 
 print('União')
 print(a.uniao(b))
-
-a.imprimir()
 
 print('\nContido')
 print(b.contem(a))
@@ -42,16 +40,20 @@ print('\nConjunto D')
 d = a.interseccao(c)
 d.nomear('D')
 d.inserir(5)
-d.imprimir()
 
 print('\nDiferença')
 e = a.diferenca(b)
 e.nomear('E')
-e.imprimir()
 
 print('\n\nContido propriamente')
 print(a.contidoPropriamente(b))
 
 print('\n\nConjunto das partes')
-a.conjuntoDasPartes()
+# a.conjuntoDasPartes()
+x = Conjunto('x','y','z','a')
+x.conjuntoDasPartes()
 
+print('\n\ntoString')
+l = Conjunto()
+z = Conjunto(1,2,a,l)
+print(z.toString())

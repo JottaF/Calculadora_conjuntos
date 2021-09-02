@@ -5,19 +5,17 @@ class Conjunto:
 
         for i in arg:
             if i not in self.conjunto:
-                self.conjunto.append(str(i))
+                self.conjunto.append(i)
+
     def nomear(self, nome):
         self.nome = nome
     
     def inserir(self, elemento):
         if elemento not in self.conjunto:
-            self.conjunto.append(str(elemento))
+            self.conjunto.append(elemento)
         else:
             print('Já possui o elemento ', elemento)
     
-    def imprimir(self):
-        print(self.nome,'= {', (', ').join(sorted(self.conjunto)), '}')
-
     def tamanho(self):
         print(len(self.conjunto))
         
@@ -122,4 +120,26 @@ class Conjunto:
             return True
         return False
         
-
+    def produto_cartesiano(self,elemento): 
+        coordenadas=[]
+        for i in self.conjunto:
+            for j in elemento.conjunto:
+                coordenadas.append((i,j))
+        print('Coordenadas\n', coordenadas)
+        return False
+    
+    def toString(self):
+        result = '{'
+        print(self.conjunto)
+        for i in range(len(self.conjunto)):
+            if type(self.conjunto[i]) == type(Conjunto()):
+                if i < len(self.conjunto)-1:
+                    result += self.conjunto[i].toString() + ', '
+                else:
+                    result += self.conjunto[i].toString()
+            else:
+                if i < len(self.conjunto)-1:
+                    result += (str(self.conjunto[i]) + ', ')
+                else:
+                    result += str(self.conjunto[i])
+        return result + '}'
