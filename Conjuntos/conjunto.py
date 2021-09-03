@@ -1,11 +1,15 @@
+from universo import Universo
+
 class Conjunto:
     def __init__(self, *arg):
+        # self.universo = Universo()
         self.conjunto = []
         self.nome = 'nome'
 
         for i in arg:
             if i not in self.conjunto:
                 self.conjunto.append(i)
+                # self.universo.inserir(i)
 
     def nomear(self, nome):
         self.nome = nome
@@ -13,6 +17,7 @@ class Conjunto:
     def inserir(self, elemento):
         if elemento not in self.conjunto:
             self.conjunto.append(elemento)
+            # self.universo.inserir(elemento)
         else:
             print('Já possui o elemento ', elemento)
     
@@ -57,6 +62,14 @@ class Conjunto:
         
         return result
     
+    def complemento(self, universo):
+        result = Conjunto()
+        for i in universo.conjunto:
+            if not i in self.conjunto:
+                result.inserir(i)
+        
+        return result
+    
     def diferenca(self, elemento):
         result = Conjunto()
         for i in self.conjunto:
@@ -66,17 +79,26 @@ class Conjunto:
         return result
     
     def conjuntoDasPartes(self):
-        base = sorted(self.conjunto)
-        conjunto = []
-        conjunto.append([])
+        base = []
+        bconjunto = []
+        for i in self.conjunto:
+            if type(i) == type(Conjunto()):
+                bconjunto.append(i.conjunto)
+            else:
+                base.append(i)
+
+        base = sorted(base)
+        base += bconjunto
+        
+        conjunto = Conjunto()
+        conjunto.inserir([])
 
         for i in range(len(base)+1):
             elemento = self.__Rec(base,base,i,i)
             for i in elemento:
-                if not i in conjunto:
-                    conjunto.append(i)
+                if not i in conjunto.conjunto:
+                    conjunto.inserir(i)
 
-        print(conjunto)
         return conjunto
     
     def __Rec(self, base, rBase, size,rSize,points=[], times = 0):

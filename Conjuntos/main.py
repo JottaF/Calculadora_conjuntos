@@ -1,4 +1,7 @@
 from conjunto import Conjunto
+from universo import Universo
+
+u = Universo()
 
 a = Conjunto()
 a.nomear('A')
@@ -54,10 +57,20 @@ x = Conjunto('x','y','z','a')
 x.conjuntoDasPartes()
 
 print('\n\ntoString')
-l = Conjunto()
-z = Conjunto(1,2,a,l)
+l = Conjunto(1,2,3)
+k = Conjunto(1,l)
+j = Conjunto()
+z = Conjunto(l,k,j)
 print(z.toString())
 
 print('\n\nPoduto cartesiano')
 p = x.produto_cartesiano(a)
 print(p.toString())
+
+print('\n\nt')
+t = a.uniao(b).uniao(c)
+print(t.toString())
+
+print('\n\nUniverso')
+u.getElementos()
+# print(u.toString())
