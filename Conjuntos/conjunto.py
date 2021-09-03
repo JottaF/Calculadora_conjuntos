@@ -1,5 +1,3 @@
-from universo import Universo
-
 class Conjunto:
     def __init__(self, *arg):
         # self.universo = Universo()
@@ -91,13 +89,31 @@ class Conjunto:
         base += bconjunto
         
         conjunto = Conjunto()
-        conjunto.inserir([])
+        conjunto.inserir(Conjunto())
 
         for i in range(len(base)+1):
             elemento = self.__Rec(base,base,i,i)
             for i in elemento:
                 if not i in conjunto.conjunto:
-                    conjunto.inserir(i)
+                    if len(i) > 1:
+                        temp = Conjunto()
+                        for j in i:
+                            if type(j) == type([]):
+                                temp1 = Conjunto()
+                                for k in j:
+                                    temp1.inserir(k)
+                                temp.inserir(temp1)
+                            else:
+                                temp.inserir(j)
+                        conjunto.inserir(temp)
+                    else:
+                        if type(i[0]) == type([]):
+                            temp1 = Conjunto()
+                            for j in i[0]:
+                                temp1.inserir(j)
+                            conjunto.inserir(temp1)
+                        else:
+                            conjunto.inserir(Conjunto(i[0]))
 
         return conjunto
     

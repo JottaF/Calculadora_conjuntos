@@ -1,8 +1,5 @@
 from conjunto import Conjunto
-from universo import Universo
-
-u = Universo()
-
+'''
 a = Conjunto()
 a.nomear('A')
 b = Conjunto()
@@ -69,8 +66,15 @@ print(p.toString())
 
 print('\n\nt')
 t = a.uniao(b).uniao(c)
-print(t.toString())
+print(t.toString())'''
 
-print('\n\nUniverso')
-u.getElementos()
-# print(u.toString())
+a = Conjunto(1,2,3)
+b = Conjunto('a','b','c')
+c = Conjunto(1,2,4,5)
+d = Conjunto(a, 1,2)
+e = Conjunto(b,c)
+u = a.uniao(b).uniao(c).uniao(d).uniao(e)
+
+print('\n\nTestes')
+x = d.conjuntoDasPartes()
+print(x.toString())
